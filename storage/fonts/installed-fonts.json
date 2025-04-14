@@ -1,0 +1,16 @@
+{
+    "roboto": {
+        "300": "C:\\laragon\\www\\educapaian\\storage\\fonts\/roboto_300_373f816e49d8622890f07d83ec8d9dab",
+        "normal": "C:\\laragon\\www\\educapaian\\storage\\fonts\/roboto_normal_19250a3c7a2346a578e91836ef344bb1",
+        "500": "C:\\laragon\\www\\educapaian\\storage\\fonts\/roboto_500_947f3c107f46aee70a82dc5f0f0f422d",
+        "bold": "C:\\laragon\\www\\educapaian\\storage\\fonts\/roboto_bold_7add27c6330be31e8750ec1816378b48",
+        "900": "roboto_900_cfe24a69adfadd85928b823515b6322e"
+    },
+    "roboto slab": {
+        "normal": "C:\\laragon\\www\\educapaian\\storage\\fonts\/roboto_slab_normal_89c6a8cb0224612f8e1417e1f9689503",
+        "bold": "roboto_slab_bold_bddee33e767186e6bf5bd0ece0576b18"
+    },
+    "nucleoicons": {
+        "normal": "nucleoicons_normal_2ef5adf67cff08e9a8706c46acbc2c8c"
+    }
+}
