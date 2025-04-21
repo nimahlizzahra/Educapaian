@@ -103,6 +103,10 @@
                         <div class="d-flex justify-content-between mb-3">
                             <a href="{{ route('gurus.create') }}" class="btn btn-primary">Tambah Data Guru</a>
                         </div>
+                        <form action="{{ route('gurus.index') }}" method="GET" class="mb-4">
+                            <input type="text" name="search" placeholder="Cari guru..." value="{{ request('search') }}" class="border px-3 py-1 rounded">
+                            <button type="submit" class="bg-blue-500 text-white px-3 py-1 rounded">Cari</button>
+                        </form>
                         <table class="table table-bordered table-hover align-items-center mb-0">
                             <thead class="bg-light text-sm">
                                 <tr class="text-center">

@@ -101,15 +101,13 @@
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-3">
-                    <form method="GET" action="{{ route('capaians.index') }}" class="mb-3 d-flex">
-                        <input type="text" name="search" class="form-control me-2" placeholder="Cari nama guru atau jenis capaian..." value="{{ request('search') }}">
-                        <button type="submit" class="btn btn-outline-primary">
-                            <i class="bi bi-search"></i> {{-- Icon pencarian --}}
-                        </button>
-                    </form>
                         <div class="d-flex justify-content-between mb-3">
                             <a href="{{ route('capaians.create') }}" class="btn btn-primary">Tambah Data Pencapaian Guru</a>
                         </div>
+                        <form action="{{ route('capaians.index') }}" method="GET" class="mb-4">
+                            <input type="text" name="search" placeholder="Cari capaian..." value="{{ request('search') }}" class="border px-3 py-1 rounded">
+                            <button type="submit" class="bg-blue-500 text-white px-3 py-1 rounded">Cari</button>
+                        </form>
                         <table class="table table-bordered table-hover align-items-center mb-0">
                         <thead class="bg-light text-sm">
                             <tr class="text-center">

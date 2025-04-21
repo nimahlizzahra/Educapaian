@@ -131,9 +131,9 @@
                     </div>
 
                     <div class="mb-3">
-                      <label for="penghargaan_guru" class="form-label">Jenis Penghargaan Guru</label>
-                      <select name="penghargaan_guru" id="penghargaan_guru" class="form-control" required>
-                          <option value="" disabled selected>Pilih Jenis Penghargaan Guru</option>
+                      <label for="penghargaan" class="form-label">Jenis Penghargaan Guru</label>
+                      <select name="penghargaan" id="penghargaan" class="form-control" required>
+                      <option value="" disabled selected>Pilih Jenis Penghargaan Guru</option>
                           <option value="Sertifikat Pelatihan">Sertifikat Pelatihan</option>
                           <option value="Penghargaan Kepemimpinan">Penghargaan Kepemimpinan</option>
                           <option value="Medali Pengajaran">Medali Pengajaran</option>

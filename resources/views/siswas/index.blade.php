@@ -102,6 +102,10 @@
                         <div class="d-flex justify-content-between mb-3">
                             <a href="{{ route('siswas.create') }}" class="btn btn-primary">Tambah Data Siswa</a>
                         </div>
+                        <form action="{{ route('siswas.index') }}" method="GET" class="mb-4">
+                            <input type="text" name="search" placeholder="Cari siswa..." value="{{ request('search') }}" class="border px-3 py-1 rounded">
+                            <button type="submit" class="bg-blue-500 text-white px-3 py-1 rounded">Cari</button>
+                        </form>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover align-items-center mb-0">
                                 <thead class="bg-light text-sm">

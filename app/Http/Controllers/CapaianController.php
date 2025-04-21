@@ -45,7 +45,7 @@ class CapaianController extends Controller
             'guruID' => 'required|exists:gurus,guruID',
             'jenis_capaian' => 'required|string|max:255',
             'tanggal_capaian' => 'required|date',
-            'penghargaan' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
+            'penghargaan' => 'nullable|string|max:255',
             'deskripsi' => 'required|string',
             'penyelenggara' => 'required|string',
 
@@ -57,13 +57,7 @@ class CapaianController extends Controller
         $capaian->tanggal_capaian = $request->tanggal_capaian;
         $capaian->deskripsi = $request->deskripsi;
         $capaian->penyelenggara = $request->penyelenggara;
-
-        if ($request->hasFile('penghargaan')) {
-            $file = $request->file('penghargaan');
-            $path = $file->store('penghargaan', 'public');
-            $capaian->penghargaan = $path;
-        }
-
+        $capaian->penghargaan = $request->penghargaan;
         $capaian->save();
 
         return redirect()->route('capaians.index')->with('success', 'Data Capaian berhasil disimpan');
@@ -106,7 +100,7 @@ class CapaianController extends Controller
             'guruID' => 'required|exists:gurus,guruID',
             'jenis_capaian' => 'required|string|max:255',
             'tanggal_capaian' => 'required|date',
-            'penghargaan' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
+            'penghargaan' => 'nullable|string|max:255',
             'deskripsi' => 'required|string',
             'penyelenggara' => 'required|string',
         ]);
@@ -116,16 +110,7 @@ class CapaianController extends Controller
         $capaian->tanggal_capaian = $request->tanggal_capaian;
         $capaian->deskripsi = $request->deskripsi;
         $capaian->penyelenggara = $request->penyelenggara;
-
-        if ($request->hasFile('penghargaan')) {
-            if ($capaian->penghargaan) {
-                Storage::disk('public')->delete($capaian->penghargaan);
-            }
-            $file = $request->file('penghargaan');
-            $path = $file->store('penghargaan', 'public');
-            $capaian->penghargaan = $path;
-        }
-
+        $capaian->penghargaan = $request->penghargaan;
         $capaian->save();
 
         return redirect()->route('capaians.index')->with('success', 'Data Capaian berhasil diperbarui');

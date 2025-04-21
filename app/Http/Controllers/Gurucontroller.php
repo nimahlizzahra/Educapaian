@@ -7,11 +7,21 @@ use App\Models\Guru;
 
 class Gurucontroller extends Controller
 {
-    public function index()
-    {
-        $gurus = Guru::orderBy('created_at', 'desc')->get();
-        return view('gurus.index', compact('gurus'));
+    public function index(Request $request)
+{
+    $query = Guru::orderBy('created_at', 'desc');
+
+    if ($request->has('search') && !empty($request->search)) {
+        $search = $request->search;
+        $query->where('nama_guru', 'like', '%' . $search . '%')
+              ->orWhere('nip', 'like', '%' . $search . '%')
+              ->orWhere('mata_pelajaran', 'like', '%' . $search . '%');
     }
+
+    $gurus = $query->get();
+
+    return view('gurus.index', compact('gurus'));
+}
 
     public function create()
     {

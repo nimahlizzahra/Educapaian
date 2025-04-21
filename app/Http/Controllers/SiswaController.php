@@ -7,9 +7,18 @@ use App\Models\Siswa;
 
 class SiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $siswas = Siswa::orderBy('created_at', 'desc')->get();
+        $query = Siswa::orderBy('created_at', 'desc');
+    
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where('nama_siswa', 'like', '%' . $search . '%')
+                  ->orWhere('nisn', 'like', '%' . $search . '%'); // tambahin kalo mau bisa cari berdasarkan NISN juga
+        }
+    
+        $siswas = $query->get();
+    
         return view('siswas.index', compact('siswas'));
     }
 
