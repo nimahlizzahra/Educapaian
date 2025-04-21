@@ -85,8 +85,29 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="jenis_prestasi" class="form-label">Jenis Prestasi</label>
-                    <input type="text" name="jenis_prestasi" id="jenis_prestasi" class="form-control" value="{{ $prestasi->jenis_prestasi }}" required>
+                    <label for="kategori_prestasi" class="form-label">Kategori Prestasi</label>
+                    <select class="form-control" id="kategori_prestasi" name="kategori_prestasi" required onchange="updateBidang()">
+                        <option value="">-- Pilih Kategori --</option>
+                        <option value="Akademik" {{ old('kategori_prestasi', $prestasi->kategori_prestasi) == 'Akademik' ? 'selected' : '' }}>Akademik</option>
+                        <option value="Non-Akademik" {{ old('kategori_prestasi', $prestasi->kategori_prestasi) == 'Non-Akademik' ? 'selected' : '' }}>Non-Akademik</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="jenis_prestasi" class="form-label">Bidang Prestasi</label>
+                    <select class="form-control" id="jenis_prestasi" name="jenis_prestasi" required>
+                        <option value="">-- Pilih Bidang --</option>
+                        <!-- Opsi akan terisi berdasarkan kategori yang dipilih -->
+                        @if($prestasi->kategori_prestasi == 'Akademik')
+                            <option value="Matematika" {{ old('jenis_prestasi', $prestasi->jenis_prestasi) == 'Matematika' ? 'selected' : '' }}>Matematika</option>
+                            <option value="Fisika" {{ old('jenis_prestasi', $prestasi->jenis_prestasi) == 'Fisika' ? 'selected' : '' }}>Fisika</option>
+                            <option value="Kimia" {{ old('jenis_prestasi', $prestasi->jenis_prestasi) == 'Kimia' ? 'selected' : '' }}>Kimia</option>
+                        @elseif($prestasi->kategori_prestasi == 'Non-Akademik')
+                            <option value="Olahraga" {{ old('jenis_prestasi', $prestasi->jenis_prestasi) == 'Olahraga' ? 'selected' : '' }}>Olahraga</option>
+                            <option value="Seni" {{ old('jenis_prestasi', $prestasi->jenis_prestasi) == 'Seni' ? 'selected' : '' }}>Seni</option>
+                            <option value="Pencak Silat" {{ old('jenis_prestasi', $prestasi->jenis_prestasi) == 'Pencak Silat' ? 'selected' : '' }}>Pencak Silat</option>
+                        @endif
+                    </select>
                 </div>
 
                 <div class="mb-3">
@@ -100,24 +121,20 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi</label>
-                    <textarea name="deskripsi" id="deskripsi" class="form-control" required>{{ $prestasi->deskripsi }}</textarea>
+                    <label for="penghargaan" class="form-label">Jenis Penghargaan</label>
+                    <select name="penghargaan" id="penghargaan" class="form-control" required>
+                        <option value="" disabled {{ empty($prestasi->penghargaan) ? 'selected' : '' }}>Pilih Penghargaan</option>
+                        <option value="Medali" {{ $prestasi->penghargaan == 'Medali' ? 'selected' : '' }}>Medali</option>
+                        <option value="Piala" {{ $prestasi->penghargaan == 'Piala' ? 'selected' : '' }}>Piala</option>
+                        <option value="Sertifikat" {{ $prestasi->penghargaan == 'Sertifikat' ? 'selected' : '' }}>Sertifikat</option>
+                        <option value="Piagam" {{ $prestasi->penghargaan == 'Piagam' ? 'selected' : '' }}>Piagam</option>
+                        <option value="Trofi" {{ $prestasi->penghargaan == 'Trofi' ? 'selected' : '' }}>Trofi</option>
+                    </select>
                 </div>
 
                 <div class="mb-3">
-                    <label for="penghargaan" class="form-label">Unggah Sertifikat (PDF/JPG/PNG)</label>
-                    <input type="file" name="penghargaan" id="penghargaan" class="form-control" accept=".pdf,.jpg,.png">
-                    
-                    @if($prestasis->penghargaan)
-                        <p class="mt-2">Sertifikat saat ini: 
-                            <a href="{{ asset('storage/' . $prestasis->penghargaan) }}" target="_blank" class="btn btn-success btn-sm">Lihat Sertifikat</a>
-                        </p>
-                        
-                        <div class="form-check">
-                            <input type="checkbox" name="hapus_penghargaan" id="hapus_penghargaan" class="form-check-input">
-                            <label for="hapus_penghargaan" class="form-check-label text-danger">Hapus Sertifikat</label>
-                        </div>
-                    @endif
+                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <textarea name="deskripsi" id="deskripsi" class="form-control" required>{{ $prestasi->deskripsi }}</textarea>
                 </div>
 
 
@@ -129,6 +146,26 @@
             </form>
         </div>
     </div>
+
+    <script>
+    function updateBidang() {
+        var kategori = document.getElementById('kategori_prestasi').value;
+        var jenis_prestasi = document.getElementById('jenis_prestasi');
+        
+        // Reset jenis prestasi
+        jenis_prestasi.innerHTML = '<option value="">-- Pilih Bidang --</option>';
+        
+        if (kategori === 'Akademik') {
+            jenis_prestasi.innerHTML += '<option value="Matematika">Matematika</option>';
+            jenis_prestasi.innerHTML += '<option value="Fisika">Fisika</option>';
+            jenis_prestasi.innerHTML += '<option value="Kimia">Kimia</option>';
+        } else if (kategori === 'Non-Akademik') {
+            jenis_prestasi.innerHTML += '<option value="Olahraga">Olahraga</option>';
+            jenis_prestasi.innerHTML += '<option value="Seni">Seni</option>';
+            jenis_prestasi.innerHTML += '<option value="Pencak Silat">Pencak Silat</option>';
+        }
+    }
+</script>
 
     <script src="./assets/js/core/popper.min.js"></script>
     <script src="./assets/js/core/bootstrap.min.js"></script>

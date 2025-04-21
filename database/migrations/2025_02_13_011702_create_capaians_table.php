@@ -16,10 +16,11 @@ class CreateCapaiansTable extends Migration
         Schema::create('capaians', function (Blueprint $table) {
             $table->id('capaianID');
             $table->unsignedBigInteger('guruID');
-            $table->string('jenis_capaian');
             $table->text('deskripsi');
             $table->date('tanggal_capaian')->nullable();
             $table->string('penghargaan')->nullable(); 
+            $table->string('kategori_prestasi')->nullable(); // Akademik / Non-Akademik
+            $table->string('jenis_capaian')->nullable();
             $table->string('penyelenggara');
             $table->timestamps();
         });

@@ -101,6 +101,12 @@
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-3">
+                    <form method="GET" action="{{ route('capaians.index') }}" class="mb-3 d-flex">
+                        <input type="text" name="search" class="form-control me-2" placeholder="Cari nama guru atau jenis capaian..." value="{{ request('search') }}">
+                        <button type="submit" class="btn btn-outline-primary">
+                            <i class="bi bi-search"></i> {{-- Icon pencarian --}}
+                        </button>
+                    </form>
                         <div class="d-flex justify-content-between mb-3">
                             <a href="{{ route('capaians.create') }}" class="btn btn-primary">Tambah Data Pencapaian Guru</a>
                         </div>
@@ -110,7 +116,6 @@
                                 <th class="text-uppercase text-secondary font-weight-bolder py-2">No</th>
                                 <th class="text-uppercase text-secondary font-weight-bolder py-2">Nama Guru</th>
                                 <th class="text-uppercase text-secondary font-weight-bolder py-2">Jenis Capaian</th>
-                                <th class="text-uppercase text-secondary font-weight-bolder py-2">Penyelenggara</th> <!-- Tambahan -->
                                 <th class="text-uppercase text-secondary font-weight-bolder py-2">Penghargaan</th>
                                 <th class="text-uppercase text-secondary font-weight-bolder py-2">Aksi</th>
                             </tr>
@@ -121,16 +126,13 @@
                                 <td>{{ $loop->iteration}}</td>
                                 <td>{{ $capaian->guru->nama_guru }}</td>
                                 <td>{{ $capaian->jenis_capaian }}</td>
-                                <td>{{ $capaian->penyelenggara }}</td> <!-- Tambahan -->
                                 <td>
-                                    @if(!empty($capaian->penghargaan))
-                                        <button class="btn btn-success btn-sm" onclick="openModal('{{ asset('storage/' . $capaian->penghargaan) }}')">
-                                            Lihat Sertifikat
-                                        </button>
-                                    @else
+                                      @if(!empty($capaian->penghargaan))
+                                        <span>{{ $capaian->penghargaan }}</span>
+                                      @else
                                         <span class="text-muted">Tidak Ada</span>
-                                    @endif
-                                </td>
+                                      @endif
+                                    </td>
                                 <td>
                                     <a href="{{ route('capaians.show', $capaian->capaianID) }}" class="btn btn-sm btn-info me-1">
                                         <i class="bi bi-eye-fill"></i>

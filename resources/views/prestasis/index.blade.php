@@ -15,6 +15,8 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 </head>
 <body class="g-sidenav-show  bg-gray-200">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
@@ -100,6 +102,12 @@
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-3">
+                    <form action="{{ route('prestasis.index') }}" method="GET" class="mb-3 d-flex">
+                        <input type="text" name="search" class="form-control me-2" placeholder="Cari Nama/Prestasi..." value="{{ request('search') }}">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
                         <div class="d-flex justify-content-between mb-3">
                             <a href="{{ route('prestasis.create') }}" class="btn btn-primary">Tambah Pencapaian</a>
                         </div>
@@ -121,13 +129,12 @@
                                     <td>{{ $prestasi->jenis_prestasi }}</td>
                                     <td>
                                       @if(!empty($prestasi->penghargaan))
-                                        <button class="btn btn-success btn-sm" onclick="openModal('{{ asset('storage/' . $prestasi->penghargaan) }}')">
-                                            Lihat Sertifikat
-                                        </button>
+                                        <span>{{ $prestasi->penghargaan }}</span>
                                       @else
                                         <span class="text-muted">Tidak Ada</span>
                                       @endif
                                     </td>
+
                                     <td>
                                         <a href="{{ route('prestasis.show', $prestasi->prestasiID) }}" class="btn btn-sm btn-info me-1">
                                             <i class="bi bi-eye-fill"></i>

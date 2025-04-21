@@ -1,99 +1,99 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v3.0.0
-=========================================================
+  <!--
+  =========================================================
+  * Material Dashboard 2 - v3.0.0
+  =========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
+  * Product Page: https://www.creative-tim.com/product/material-dashboard
+  * Copyright 2021 Creative Tim (https://www.creative-tim.com)
+  * Licensed under MIT (https://www.creative-tim.com/license)
+  * Coded by Creative Tim
 
-=========================================================
+  =========================================================
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-<?php
-// Koneksi ke database (sesuaikan dengan koneksi kamu)
-$conn = new mysqli("localhost", "root", "", "db_educapaian");
+  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  -->
+  <?php
+  // Koneksi ke database (sesuaikan dengan koneksi kamu)
+  $conn = new mysqli("localhost", "root", "", "db_educapaian");
 
-// Cek koneksi
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+  // Cek koneksi
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
 
-// Ambil jumlah data
-// $siswas = $conn->query("SELECT COUNT(*) as total FROM siswas")->fetch_assoc()['total'];
-// $gurus = $conn->query("SELECT COUNT(*) as total FROM gurus")->fetch_assoc()['total'];
-// $prestasis = $conn->query("SELECT COUNT(*) as total FROM prestasis")->fetch_assoc()['total'];
-// $capaians = $conn->query("SELECT COUNT(*) as total FROM capaians")->fetch_assoc()['total'];
+  // Ambil jumlah data
+  // $siswas = $conn->query("SELECT COUNT(*) as total FROM siswas")->fetch_assoc()['total'];
+  // $gurus = $conn->query("SELECT COUNT(*) as total FROM gurus")->fetch_assoc()['total'];
+  // $prestasis = $conn->query("SELECT COUNT(*) as total FROM prestasis")->fetch_assoc()['total'];
+  // $capaians = $conn->query("SELECT COUNT(*) as total FROM capaians")->fetch_assoc()['total'];
 
-$conn->close();
-?>
+  $conn->close();
+  ?>
 
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
-  <title>
-    Data Educapaian
-  </title>
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-  <!-- Nucleo Icons -->
-  <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <!-- Material Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-  <!-- CSS Files -->
-  <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
-  <style>
-/* Supaya container-nya gak terlalu sempit, tapi juga gak full */
-.container-custom {
-    max-width: 98%;
-    margin: 0 auto;
-}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <title>
+      Data Educapaian
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- Nucleo Icons -->
+    <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+    <style>
+  /* Supaya container-nya gak terlalu sempit, tapi juga gak full */
+  .container-custom {
+      max-width: 98%;
+      margin: 0 auto;
+  }
 
-/* Card lebih gedean dikit */
-.card {
-    min-height: 160px; /* Biar memanjang ke bawah sedikit */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+  /* Card lebih gedean dikit */
+  .card {
+      min-height: 160px; /* Biar memanjang ke bawah sedikit */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
 
-/* Header card lebih lega */
-.card-header {
-    padding: 20px 15px;
-}
+  /* Header card lebih lega */
+  .card-header {
+      padding: 20px 15px;
+  }
 
-/* Text di dalam card agak dibesarin */
-.card-header p {
-    font-size: 14px;
-    font-weight: bold;
-}
+  /* Text di dalam card agak dibesarin */
+  .card-header p {
+      font-size: 14px;
+      font-weight: bold;
+  }
 
-.card-header h4 {
-    font-size: 28px; /* Angka lebih gede */
-    margin-top: 5px;
-}
+  .card-header h4 {
+      font-size: 28px; /* Angka lebih gede */
+      margin-top: 5px;
+  }
 
-/* Icon biar lebih balance */
-.icon {
-    width: 60px;
-    height: 60px;
-    font-size: 28px;
-    line-height: 60px;
-}
+  /* Icon biar lebih balance */
+  .icon {
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      line-height: 60px;
+  }
 
-</style>
-  
-</head>
+  </style>
+    
+  </head>
 
 <body class="g-sidenav-show  bg-gray-200">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
@@ -107,14 +107,15 @@ $conn->close();
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="./pages/dashboard.html">
+      <li class="nav-item">
+          <a class="nav-link text-white {{ Request::is('dashboard') ? 'active bg-gradient-primary' : '' }}" href="{{ url('dashboard') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link text-white" href="{{ route('siswas.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -123,6 +124,7 @@ $conn->close();
             <span class="nav-link-text ms-1">Data Siswa</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link text-white " href="{{ route('gurus.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -131,6 +133,7 @@ $conn->close();
             <span class="nav-link-text ms-1">Data Guru</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link text-white " href="{{ route('prestasis.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -139,6 +142,7 @@ $conn->close();
             <span class="nav-link-text ms-1">Capai Siswa</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link text-white  " href="{{ route('capaians.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -147,6 +151,7 @@ $conn->close();
             <span class="nav-link-text ms-1">Capai Guru</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link text-white  " href="{{ route('laporan.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

@@ -109,7 +109,6 @@
                                         <th class="text-uppercase text-secondary font-weight-bolder py-2">No</th>
                                         <th class="text-uppercase text-secondary font-weight-bolder py-2">NISN</th>
                                         <th class="text-uppercase text-secondary font-weight-bolder py-2">Nama Siswa</th>
-                                        <th class="text-uppercase text-secondary font-weight-bolder py-2">Kelas</th>
                                         <th class="text-uppercase text-secondary font-weight-bolder py-2">Email</th>
                                         <th class="text-uppercase text-secondary font-weight-bolder py-2">Aksi</th>
                                     </tr>
@@ -120,7 +119,6 @@
                                         <td>{{ $loop->iteration}}</td>
                                         <td>{{ $siswa->nisn }}</td>
                                         <td>{{ $siswa->nama_siswa }}</td>
-                                        <td>{{ $siswa->kelas }}</td>
                                         <td>{{ $siswa->email }}</td>
                                         <td>
                                         <a href="{{ route('siswas.show', $siswa->siswaID) }}" class="btn btn-sm btn-info me-1">

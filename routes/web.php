@@ -44,10 +44,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('prestasis', PrestasiController::class);
     Route::resource('capaians', CapaianController::class);
 });
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-
+// Route untuk menampilkan halaman sertifikat
+Route::get('/sertifikat/{id}', [PrestasiController::class, 'showSertifikat'])->name('sertifikat.show');
 Route::get('/laporan', [LaporanPencapaianController::class, 'index'])->name('laporan.index');
 Route::get('/laporan/filter', [LaporanPencapaianController::class, 'filter'])->name('laporan.filter');
 Route::get('/laporan/export-pdf', [LaporanPencapaianController::class, 'exportPdf'])->name('laporan.exportPdf');

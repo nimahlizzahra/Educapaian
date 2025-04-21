@@ -16,10 +16,11 @@ class CreatePrestasisTable extends Migration
         Schema::create('prestasis', function (Blueprint $table) {
             $table->id('prestasiID');
             $table->unsignedBigInteger('siswaID')->nullable();
-            $table->string('jenis_prestasi');
             $table->text('deskripsi');
             $table->date('tanggal_raih_prestasi');
             $table->string('penghargaan')->nullable();
+            $table->string('kategori_prestasi')->nullable(); // Akademik / Non-Akademik
+            $table->string('jenis_prestasi')->nullable();
             $table->string('penyelenggara'); 
             $table->timestamps();
         });

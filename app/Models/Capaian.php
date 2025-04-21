@@ -13,6 +13,7 @@ class Capaian extends Model
     protected $primaryKey = 'capaianID';
     protected $fillable = [
         'guruID',
+        'kategori_prestasi',
         'jenis_capaian',
         'deskripsi',
         'tanggal_capaian',

@@ -10,12 +10,23 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class CapaianController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $capaians = Capaian::orderBy('created_at', 'desc')->get();
+        $query = Capaian::with('guru')->orderBy('created_at', 'desc');
+    
+        // Jika ada input pencarian
+        if ($request->has('search') && $request->search != '') {
+            $query->whereHas('guru', function ($q) use ($request) {
+                $q->where('nama_guru', 'like', '%' . $request->search . '%');
+            })
+            ->orWhere('jenis_capaian', 'like', '%' . $request->search . '%');
+        }
+    
+        $capaians = $query->get();
+    
         return view('capaians.index', compact('capaians'));
     }
-
+    
     public function create()
     {
         $gurus = Guru::all(); 

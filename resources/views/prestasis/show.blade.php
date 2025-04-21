@@ -33,18 +33,26 @@
                 <th>Nama Guru</th>
                 <td>{{ $prestasi->siswa->nama_siswa }}</td> <!-- Asumsi ada relasi ke model Guru -->
               </tr>
-              <tr>
+                 <tr>
+                    <th>Penghargaan</th>
+                    <td>
+                        @if(!empty($prestasi->penghargaan))
+                            {{ $prestasi->penghargaan }}
+                        @else
+                            <span class="text-muted">Tidak Ada</span>
+                        @endif
+                    </td>
+                </tr>
+                <tr>
                 <th>Jenis Prestasi</th>
-                <td>{{ $prestasi->jenis_prestasi }}</td>
-              </tr>
-              <tr>
-                  <th>Deskripsi</th>
-                  <td>
-                      <div style="white-space: pre-line; word-wrap: break-word; max-width: 400px;">
-                          {{ $prestasi->deskripsi }}
-                      </div>
-                  </td>
-              </tr>
+                <td>
+                    @if(!empty($prestasi->jenis_prestasi))
+                    {{ $prestasi->jenis_prestasi }}
+                    @else
+                    <span class="text-muted">Tidak Diketahui</span>
+                    @endif
+                </td>
+                </tr>
               <tr>
                 <th>Tanggal Raih Prestasi</th>
                 <td>{{ \Carbon\Carbon::parse($prestasi->tanggal_raih_prestasi)->format('d-m-Y') }}</td>
@@ -53,9 +61,13 @@
                 <th>Penyelenggara</th>
                 <td>{{ $prestasi->penyelenggara ?? 'Tidak diketahui' }}</td>
                 </tr>
-              <tr>
-                <th>Penghargaan</th>
-                <td>{{ $prestasi->penghargaan ?? 'Tidak ada penghargaan' }}</td>
+                <tr>
+                  <th>Deskripsi</th>
+                  <td>
+                      <div style="white-space: pre-line; word-wrap: break-word; max-width: 400px;">
+                          {{ $prestasi->deskripsi }}
+                      </div>
+                  </td>
               </tr>
             </table>
 

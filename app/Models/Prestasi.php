@@ -13,12 +13,14 @@ class Prestasi extends Model
     protected $primaryKey = 'prestasiID';
     protected $fillable = [
         'siswaID',
+        'kategori_prestasi',
         'jenis_prestasi',
-        'deskripsi',
         'tanggal_raih_prestasi',
-        'penghargaan',
+        'deskripsi',
         'penyelenggara',
+        'penghargaan',
     ];
+    
 
     public function siswa()
 {

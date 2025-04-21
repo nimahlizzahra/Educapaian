@@ -113,7 +113,7 @@
 
                     <div class="mb-3">
                         <label for="telepon" class="form-label">Telepon</label>
-                        <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Masukkan Telepon" required>
+                        <input type="number" class="form-control" id="telepon" name="telepon" placeholder="Masukkan Telepon" required>
                     </div>
 
                     <div class="mb-3">

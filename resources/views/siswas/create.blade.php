@@ -114,7 +114,7 @@
 
                     <div class="mb-3">
                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required>
+                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" max="2025-12-31" required>
                     </div>
 
                     <div class="mb-3">
@@ -124,7 +124,7 @@
 
                     <div class="mb-3">
                         <label for="telepon" class="form-label">Telepon</label>
-                        <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Masukkan Telepon" required>
+                        <input type="number" class="form-control" id="telepon" name="telepon" placeholder="Masukkan Telepon" required>
                     </div>
 
                     <div class="mb-3">

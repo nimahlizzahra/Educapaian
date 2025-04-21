@@ -60,19 +60,19 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white  " href="{{ route('laporan.index') }}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
-            </div>
-            <span class="nav-link-text ms-1">Laporan Pencapaian</span>
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link text-white active bg-gradient-primary " href="{{ route('capaians.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
             <span class="nav-link-text ms-1">Capai Guru</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white  " href="{{ route('laporan.index') }}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+            </div>
+            <span class="nav-link-text ms-1">Laporan Pencapaian</span>
           </a>
         </li>
        
@@ -105,9 +105,20 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="jenis_capaian" class="form-label">Jenis Capaian</label>
-                        <input type="text" class="form-control" id="jenis_capaian" name="jenis_capaian" placeholder="Masukkan Jenis Capaian" required>
-                    </div>
+                      <label for="kategori_capaian" class="form-label">Kategori Capaian</label>
+                      <select class="form-control" id="kategori_capaian" name="kategori_capaian" required onchange="updateJenisCapaian()">
+                          <option value="">-- Pilih Kategori Capaian --</option>
+                          <option value="Akademik">Akademik</option>
+                          <option value="Non-Akademik">Non-Akademik</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="jenis_capaian" class="form-label">Jenis Capaian</label>
+                      <select class="form-control" id="jenis_capaian" name="jenis_capaian" required>
+                          <option value="">-- Pilih Jenis Capaian --</option>
+                      </select>
+                  </div>
 
                     <div class="mb-3">
                         <label for="tanggal_capaian" class="form-label">Tanggal Pencapaian</label>
@@ -120,9 +131,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="penghargaan" class="form-label">Unggah Sertifikat</label>
-                        <input type="file" name="penghargaan" id="penghargaan" class="form-control" accept=".pdf,.jpg,.png">
-                    </div>
+                      <label for="penghargaan_guru" class="form-label">Jenis Penghargaan Guru</label>
+                      <select name="penghargaan_guru" id="penghargaan_guru" class="form-control" required>
+                          <option value="" disabled selected>Pilih Jenis Penghargaan Guru</option>
+                          <option value="Sertifikat Pelatihan">Sertifikat Pelatihan</option>
+                          <option value="Penghargaan Kepemimpinan">Penghargaan Kepemimpinan</option>
+                          <option value="Medali Pengajaran">Medali Pengajaran</option>
+                          <option value="Penghargaan Inovasi Pengajaran">Penghargaan Inovasi Pengajaran</option>
+                          <option value="Sertifikat Pengabdian">Sertifikat Pengabdian</option>
+                          <option value="Penghargaan Layanan Pendidikan">Penghargaan Layanan Pendidikan</option>
+                      </select>
+                  </div>
 
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label">Deskripsi</label>
@@ -137,6 +156,39 @@
             </div>
         </div>
     </div>
+
+    <script>
+    function updateJenisCapaian() {
+        var kategori = document.getElementById("kategori_capaian").value;
+        var jenisCapaianSelect = document.getElementById("jenis_capaian");
+        var options = "";
+
+        if (kategori == "Akademik") {
+            options = `
+                <option value="Pengajaran Mata Pelajaran">Pengajaran Mata Pelajaran</option>
+                <option value="Penelitian">Penelitian</option>
+                <option value="Publikasi Ilmiah">Publikasi Ilmiah</option>
+                <option value="Pengembangan Kurikulum">Pengembangan Kurikulum</option>
+                <option value="Lomba Akademik">Lomba Akademik</option>
+                <option value="Pelatihan Akademik">Pelatihan Akademik</option>
+            `;
+        } else if (kategori == "Non-Akademik") {
+            options = `
+                <option value="Kegiatan Ekstrakurikuler">Kegiatan Ekstrakurikuler</option>
+                <option value="Pengembangan Kepribadian">Pengembangan Kepribadian</option>
+                <option value="Kegiatan Sosial">Kegiatan Sosial</option>
+                <option value="Olahraga">Olahraga</option>
+                <option value="Seni">Seni</option>
+                <option value="Penghargaan Bidang Lain">Penghargaan Bidang Lain</option>
+            `;
+        } else {
+            options = `<option value="">-- Pilih Jenis Capaian --</option>`;
+        }
+
+        // Update the options in the jenis_capaian dropdown
+        jenisCapaianSelect.innerHTML = options;
+    }
+</script>
 
     <script src="./assets/js/core/popper.min.js"></script>
     <script src="./assets/js/core/bootstrap.min.js"></script>
